@@ -45,46 +45,86 @@ const Chart = ({ navigation, route }) => {
             {
                 loading != true ? (
                     <>
-                        <View>
-                            <Text>Covid-19 Victim Chart</Text>
-                            <LineChart
-                                data={{
-                                    labels: labelData,
-                                    datasets: [
-                                        {
-                                            data: victimData
-                                        }
-                                    ]
-                                }}
-                                width={vw(98)} // from react-native
-                                height={220}
-                                // yAxisLabel=""
-                                // yAxisSuffix="k"
-                                yAxisInterval={2} // optional, defaults to 1
-                                chartConfig={{
-                                    backgroundColor: "white",
-                                    backgroundGradientFrom: "gray",
-                                    backgroundGradientTo: "gray",
-                                    decimalPlaces: 1,
-                                    barPercentage: 1,
-                                    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                                    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                                    style: {
-                                        borderRadius: 16
-                                    },
-                                    propsForDots: {
-                                        r: "1",
-                                        strokeWidth: "3",
-                                        stroke: "black"
-                                    }
-                                }}
-
-                                style={{
-                                    marginVertical: 8,
-                                    borderRadius: 16
-                                }}
-                            />
+                        <View style={{  borderBottomWidth: 1, borderColor: 'gray' }}>
+                            <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, paddingVertical:vw(2) }}>Statistic and Summary</Text>
                         </View>
+                        <ScrollView>
+                            <View style={{ marginHorizontal: vw(5) }}>
+                                <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, marginTop: 20 }}>Covid-19 Victim Chart</Text>
+                                <LineChart
+                                    data={{
+                                        labels: labelData,
+                                        datasets: [
+                                            {
+                                                data: victimData
+                                            }
+                                        ]
+                                    }}
+                                    width={vw(90)} // from react-native
+                                    height={300}
+                                    // yAxisLabel=""
+                                    // yAxisSuffix="k"
+                                    yAxisInterval={2} // optional, defaults to 1
+                                    chartConfig={{
+                                        backgroundColor: "white",
+                                        backgroundGradientFrom: "gray",
+                                        backgroundGradientTo: "gray",
+                                        decimalPlaces: 0,
+                                        barPercentage: 1,
+                                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                                        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                                        style: {
+                                            borderRadius: 16
+                                        },
+                                        propsForDots: {
+                                            r: "1",
+                                            strokeWidth: "3",
+                                            stroke: "black"
+                                        },
+                                        horizontalLabelRotation: 40,
+
+                                    }}
+
+                                    style={{
+                                        marginVertical: 8,
+                                        borderRadius: 16
+                                    }}
+                                />
+                            </View>
+                            <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, marginVertical: 15 }}>Covid-19 Victim Table</Text>
+                            <View>
+                                <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
+                                    <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                        <Text style={{ alignSelf: 'center' }}>No.</Text>
+                                    </View>
+                                    <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                        <Text style={{ alignSelf: 'center' }}>Region</Text>
+                                    </View>
+                                    <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                        <Text style={{ alignSelf: 'center' }}>Total Cases</Text>
+                                    </View>
+                                </View>
+                                {
+                                    labelData.length > 0 && labelData.map((item, index) => {
+                                        return (
+                                            <>
+                                                <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
+                                                    <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                        <Text style={{ alignSelf: 'center' }}>{index + 1}</Text>
+                                                    </View>
+                                                    <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                        <Text style={{ alignSelf: 'center' }}>{item}</Text>
+                                                    </View>
+                                                    <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                        <Text style={{ alignSelf: 'center' }}>{victimData[index]}</Text>
+                                                    </View>
+                                                </View>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </View>
+                        </ScrollView>
                     </>
                 ) : (
                         <View style={{ marginTop: vh(40) }}>
