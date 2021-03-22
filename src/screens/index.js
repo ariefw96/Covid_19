@@ -9,6 +9,7 @@ import ListByRegion from './ListByRegion'
 import ListAllCases from './ListAllCases'
 import Details from './Details'
 import EditScreen from './EditScreen'
+import ChartScreen from './Chart'
 export {
     RegisterScreen,
     LoginScreen,
@@ -20,5 +21,6 @@ export {
     ListByRegion,
     ListAllCases, 
     Details,
-    EditScreen
+    EditScreen,
+    ChartScreen
 };

@@ -107,19 +107,19 @@ const ProfileScreen = ({ navigation, route }) => {
         data.append('gender', gender)
         data.append('location', region)
         data.append('created_by', auth.id)
-        axios.patch(API_URL + '/victim/update/' + route.params.victimId, data, config)
-            .then(({ data }) => {
-                console.log(data)
-                setBtnText('Submit')
-                ToastAndroid.showWithGravity(
-                    "Success Update Victim",
-                    ToastAndroid.SHORT,
-                    ToastAndroid.CENTER
-                );
-                navigation.replace('List')
-            }).catch(({ response }) => {
-                console.log(response.data)
-            })
+        // axios.patch(API_URL + '/victim/update/' + route.params.victimId, data, config)
+        //     .then(({ data }) => {
+        //         console.log(data)
+        //         setBtnText('Submit')
+        //         ToastAndroid.showWithGravity(
+        //             "Success Update Victim",
+        //             ToastAndroid.SHORT,
+        //             ToastAndroid.CENTER
+        //         );
+        //         navigation.replace('List')
+        //     }).catch(({ response }) => {
+        //         console.log(response.data)
+        //     })
     }
 
     return (

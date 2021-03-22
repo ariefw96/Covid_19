@@ -77,7 +77,7 @@ const ProfileScreen = ({ navigation, logout }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.listOperation}
-                  onPress={() => navigation.navigate('ListRegion')}
+                  onPress={() => navigation.navigate('Chart')}
                 >
                   <Text style={styles.nameOperation}>Victim cases chart</Text>
                   <Icon name="arrow-right" size={20} color="#4D4B57" />

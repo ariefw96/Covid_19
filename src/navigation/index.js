@@ -13,7 +13,8 @@ import {
   ListByRegion,
   ListAllCases,
   Details,
-  EditScreen
+  EditScreen,
+  ChartScreen
 } from '../screens';
 
 import { SocketProvider } from '../utils/context/SocketProvider';
@@ -79,6 +80,11 @@ const Navigation = ({ navigation }) => {
         <Stack.Screen
           name="Edit"
           component={EditScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Chart"
+          component={ChartScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
