@@ -79,6 +79,12 @@ const LoginScreen = ({ navigation, login }) => {
               ToastAndroid.CENTER
             );
             console.log(response.data)
+          }else{
+            ToastAndroid.showWithGravity(
+              "Internal Server ERROR",
+              ToastAndroid.SHORT,
+              ToastAndroid.CENTER
+            );
           }
         })
     }

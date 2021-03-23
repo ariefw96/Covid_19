@@ -21,6 +21,7 @@ const RegisterScreen = ({ navigation, setEmailForgot }) => {
   const [phone, setPhone] = useState('');
   const [show, setShow] = useState(true);
   const [errMsg, setErrMsg] = useState('');
+  const [btnText, setBtnText] = useState('Register')
 
   const empty = () => {
     if (phone === '' || pass === '') {
@@ -40,6 +41,7 @@ const RegisterScreen = ({ navigation, setEmailForgot }) => {
         password: pass,
         user_type: 2
       }
+      setBtnText('Please wait')
       axios.post(API_URL + `/auth/signup`, signupData)
         .then(({ data }) => {
           ToastAndroid.showWithGravity(
@@ -92,10 +94,12 @@ const RegisterScreen = ({ navigation, setEmailForgot }) => {
           {/* username */}
           <Input
             placeholder="Enter your phone number"
+            keyboardType={"number-pad"}
             leftIcon={
               <IconUser
                 name="user"
                 size={24}
+                
                 color={phone === '' ? '#878787' : '#f55742'}
               />
             }
@@ -131,7 +135,7 @@ const RegisterScreen = ({ navigation, setEmailForgot }) => {
           style={empty() ? styles.btn : styles.btnActive}
           onPress={register}>
           <Text style={empty() ? styles.textNon : styles.textActive}>
-            Sign Up
+            {btnText}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
