@@ -45,11 +45,31 @@ const Chart = ({ navigation, route }) => {
             {
                 loading != true ? (
                     <>
-                        <View style={{  borderBottomWidth: 1, borderColor: 'gray' }}>
-                            <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, paddingVertical:vw(2) }}>Statistic and Summary</Text>
-                        </View>
-                        <ScrollView>
-                            <View style={{ marginHorizontal: vw(5) }}>
+                        <ScrollView style={{
+                            backgroundColor: '#E5E8ED',
+                            minHeight: vh(90),
+
+                        }}>
+                            <View style={{ backgroundColor: '#E5E8ED' }}>
+                                <View style={{ height: vh(10), justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text
+                                        style={{
+                                            color: '#eb4034',
+                                            alignSelf: 'center',
+                                            fontSize: 26,
+                                            fontWeight: 'bold',
+                                        }}
+                                    >COVID-19 DATA CENTER</Text>
+                                </View>
+                            </View>
+                            <View style={{
+                                paddingHorizontal: vw(5),
+                                borderTopRightRadius: 30,
+                                borderTopLeftRadius: 30,
+                                borderTopWidth: 0.5,
+                                elevation: 1,
+                                backgroundColor: 'white'
+                            }}>
                                 <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, marginTop: 20 }}>Covid-19 Victim Chart</Text>
                                 <LineChart
                                     data={{
@@ -61,10 +81,10 @@ const Chart = ({ navigation, route }) => {
                                         ]
                                     }}
                                     width={vw(90)} // from react-native
-                                    height={300}
+                                    height={400}
                                     // yAxisLabel=""
                                     // yAxisSuffix="k"
-                                    yAxisInterval={2} // optional, defaults to 1
+                                    yAxisInterval={5} // optional, defaults to 1
                                     chartConfig={{
                                         backgroundColor: "white",
                                         backgroundGradientFrom: "gray",
@@ -77,52 +97,54 @@ const Chart = ({ navigation, route }) => {
                                             borderRadius: 16
                                         },
                                         propsForDots: {
-                                            r: "1",
-                                            strokeWidth: "3",
+                                            r: "2",
+                                            strokeWidth: "5",
                                             stroke: "black"
                                         },
-                                        horizontalLabelRotation: 40,
 
                                     }}
+                                    verticalLabelRotation={45}
 
                                     style={{
                                         marginVertical: 8,
-                                        borderRadius: 16
+                                        borderRadius: 16,
                                     }}
                                 />
                             </View>
-                            <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, marginVertical: 15 }}>Covid-19 Victim Table</Text>
-                            <View>
-                                <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
-                                    <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                        <Text style={{ alignSelf: 'center' }}>No.</Text>
+                            <View style={{ backgroundColor: 'white' }}>
+                                <Text style={{ alignSelf: 'center', fontWeight: 'bold', fontSize: 24, marginVertical: 15 }}>Covid-19 Victim Table</Text>
+                                <View style={{ paddingBottom: 50 }}>
+                                    <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
+                                        <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                            <Text style={{ alignSelf: 'center' }}>No.</Text>
+                                        </View>
+                                        <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                            <Text style={{ alignSelf: 'center' }}>Region</Text>
+                                        </View>
+                                        <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                            <Text style={{ alignSelf: 'center' }}>Total Cases</Text>
+                                        </View>
                                     </View>
-                                    <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                        <Text style={{ alignSelf: 'center' }}>Region</Text>
-                                    </View>
-                                    <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                        <Text style={{ alignSelf: 'center' }}>Total Cases</Text>
-                                    </View>
+                                    {
+                                        labelData.length > 0 && labelData.map((item, index) => {
+                                            return (
+                                                <>
+                                                    <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
+                                                        <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                            <Text style={{ alignSelf: 'center' }}>{index + 1}</Text>
+                                                        </View>
+                                                        <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                            <Text style={{ alignSelf: 'center' }}>{item}</Text>
+                                                        </View>
+                                                        <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
+                                                            <Text style={{ alignSelf: 'center' }}>{victimData[index]}</Text>
+                                                        </View>
+                                                    </View>
+                                                </>
+                                            )
+                                        })
+                                    }
                                 </View>
-                                {
-                                    labelData.length > 0 && labelData.map((item, index) => {
-                                        return (
-                                            <>
-                                                <View style={{ flexDirection: 'row', marginHorizontal: vw(5) }}>
-                                                    <View style={{ width: vw(10), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                                        <Text style={{ alignSelf: 'center' }}>{index + 1}</Text>
-                                                    </View>
-                                                    <View style={{ width: vw(50), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                                        <Text style={{ alignSelf: 'center' }}>{item}</Text>
-                                                    </View>
-                                                    <View style={{ width: vw(30), borderWidth: 2, borderColor: 'gray', padding: 5 }}>
-                                                        <Text style={{ alignSelf: 'center' }}>{victimData[index]}</Text>
-                                                    </View>
-                                                </View>
-                                            </>
-                                        )
-                                    })
-                                }
                             </View>
                         </ScrollView>
                     </>

@@ -107,30 +107,30 @@ const ProfileScreen = ({ navigation, route }) => {
         data.append('gender', gender)
         data.append('location', region)
         data.append('created_by', auth.id)
-        // axios.patch(API_URL + '/victim/update/' + route.params.victimId, data, config)
-        //     .then(({ data }) => {
-        //         console.log(data)
-        //         setBtnText('Submit')
-        //         ToastAndroid.showWithGravity(
-        //             "Success Update Victim",
-        //             ToastAndroid.SHORT,
-        //             ToastAndroid.CENTER
-        //         );
-        //         navigation.replace('List')
-        //     }).catch(({ response }) => {
-        //         console.log(response.data)
-        //     })
+        axios.patch(API_URL + '/victim/update/' + route.params.victimId, data, config)
+            .then(({ data }) => {
+                console.log(data)
+                setBtnText('Submit')
+                ToastAndroid.showWithGravity(
+                    "Success Update Victim",
+                    ToastAndroid.SHORT,
+                    ToastAndroid.CENTER
+                );
+                navigation.replace('List')
+            }).catch(({ response }) => {
+                console.log(response.data)
+            })
     }
 
     return (
-        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}>
-            <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <ScrollView style={{ flex: 1, flexDirection: 'column' }}>
+            <View style={{  flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginVertical:vh(5) }}>
                 <Text style={styles.name}>COVID-19</Text>
                 <Text style={styles.name}>DATA CENTER</Text>
             </View>
             <View style={styles.content2}>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Add New Victim</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Edit Victim</Text>
                 </View>
                 <View>
                     <Form>
@@ -223,7 +223,7 @@ const ProfileScreen = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

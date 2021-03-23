@@ -69,7 +69,7 @@ const ProfileScreen = ({ navigation }) => {
     data.append('age', age)
     data.append('address', address)
     if (photo[0]) {
-      for (let i = 0; i < this.state.product_img.length; i++) {
+      for (let i = 0; i < photo.length; i++) {
         data.append('photo',
           {
             name: photo[i].path.split('/').pop(),
@@ -86,25 +86,25 @@ const ProfileScreen = ({ navigation }) => {
     data.append('location', region)
     data.append('created_by', auth.id)
     axios.post(API_URL + '/victim/add', data, config)
-    .then(({data}) =>{
-      console.log(data)
-      setBtnText('Submit')
-      ToastAndroid.showWithGravity(
-        "Success add new Victim",
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER
-      );
-      navigation.replace('List')
-    }).catch(({response}) =>{
-      console.log(response.dataS)
-    })
+      .then(({ data }) => {
+        console.log(data)
+        setBtnText('Submit')
+        ToastAndroid.showWithGravity(
+          "Success add new Victim",
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+        navigation.replace('List')
+      }).catch(({ response }) => {
+        console.log(response.data)
+      })
   }
 
   // console.log(loadRegion)
 
   return (
-    <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}>
-      <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <ScrollView style={{ flex: 1, flexDirection: 'column', }}>
+      <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginVertical:vh(8) }}>
         <Text style={styles.name}>COVID-19</Text>
         <Text style={styles.name}>DATA CENTER</Text>
       </View>
@@ -159,6 +159,18 @@ const ProfileScreen = ({ navigation }) => {
                 }
               </Picker>
             </View>
+            {
+              photo.length > 0 ?
+                (
+                  <>
+                    <Image source={{ uri: photo[0].path }} style={{ width: vw(20), height: vw(20) }} />
+                  </>
+                ) : (
+                  <>
+
+                  </>
+                )
+            }
             <TouchableOpacity
               style={{
                 backgroundColor: '#f5aa42',
@@ -184,7 +196,7 @@ const ProfileScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

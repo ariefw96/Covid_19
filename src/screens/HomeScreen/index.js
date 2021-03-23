@@ -15,16 +15,44 @@ import { useSelector, connect } from 'react-redux'
 import axios from 'axios'
 import { API_URL } from '@env'
 import { logout } from '../../utils/redux/action/authAction'
-import ImagePicker from 'react-native-image-crop-picker'
+import PushNotification from 'react-native-push-notification'
+import { showNotification } from './../../notification'
+import { useSocket } from './../../utils/context/SocketProvider'
 
 import Icon from 'react-native-vector-icons/Feather';
-import profile from '../../assets/images/profile-img.png';
 
 
 const ProfileScreen = ({ navigation, logout }) => {
   const auth = useSelector((state) => state.authReducer);
+  const channel = 'notif'
+  const socket = useSocket()
 
-  console.log(auth)
+  useEffect(() => {
+    PushNotification.createChannel(
+      {
+        channelId: 'notif',
+        channelName: 'My Notification channel',
+        channelDescription: 'A channel to categories your notification',
+        soundName: 'default',
+        importance: 4,
+        vibrate: true,
+      },
+      (created) => console.log(`create channel returned '${created}'`),
+    );
+
+    PushNotification.getChannels((channel_ids) => {
+      console.log(channel_ids);
+    });
+  }, [])
+
+  useEffect(() => {
+    if (auth.type == 1) {
+      socket.on('admin', (message) => {
+        showNotification('Notification', message, channel);
+      })
+      return () => socket.off('admin')
+    }
+  }, [])
 
   const promptLogout = () => {
     Alert.alert(

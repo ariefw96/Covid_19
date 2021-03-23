@@ -44,6 +44,7 @@ const LoginScreen = ({ navigation, login }) => {
   }, [])
 
   const submitLogin = () => {
+    setBtnText('Please Wait')
     setErrMsg('')
     if (empty()) {
       setErrMsg('Please fill out this field!')
@@ -71,6 +72,7 @@ const LoginScreen = ({ navigation, login }) => {
           navigation.replace('Home')
         }).catch(({ response }) => {
           if (response.status == 404) {
+            setBtnText('Login')
             ToastAndroid.showWithGravity(
               "Phone/password wrong!",
               ToastAndroid.SHORT,
@@ -106,6 +108,7 @@ const LoginScreen = ({ navigation, login }) => {
             <Input
               placeholder="Enter your phone number"
               keyboardAppearance="dark"
+              keyboardType={"number-pad"}
               leftIcon={
                 <IconUser
                   name="user"

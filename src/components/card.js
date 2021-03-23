@@ -46,7 +46,7 @@ const Card = ({ id, photo, name, gender, age, location, navigation }) => {
                     {
                         photo == '' ? (
                             <Image
-                                style={{ height: vw(29), width: vw(30), borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
+                                style={{ height: vw(35), width: vw(30), borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
                                 source={{ uri: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' }}
                             />
                         ) : (
