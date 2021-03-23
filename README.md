@@ -1,4 +1,4 @@
-# BlanjaIn React-Native
+# COVID-19 Data Center
 
 ## Contents
 
