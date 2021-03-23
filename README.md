@@ -58,8 +58,11 @@ API_URL = "http://localhost:8000"
 
 **restful-API**
 
-
 [`COVID19-restAPI`](https://github.com/ariefw96/firebase_covid)
+
+**Publication**
+
+[`Here (Android Only)`](https://drive.google.com/drive/u/0/folders/1sPudkkBfE2QGUQwirk0U4YxK5RS7HkQp)
 
 
 
