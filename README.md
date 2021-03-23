@@ -20,6 +20,12 @@ COVID 19 DATA CENTER is an mobile App that can be used to report Covid'19 Cases.
 - Table and Statistic per Region ( Admin )
 - Notification when new Victim cases added ( Admin )
 
+- Demo Admin : 
+- Phone : 088812345678
+- Admin123
+- Demo User : 
+- Create user what you want.
+
 ## Requirements for Development
 
 - [`Node Js`](https://nodejs.org/en/)
