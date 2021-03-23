@@ -32,12 +32,12 @@ COVID 19 DATA CENTER is an mobile App that can be used to report Covid'19 Cases.
 ## Installation for Development
 
 1. Open your terminal or command prompt
-2. Type `git clone https://github.com/ariefw96/blanjaIn-React-Native.git`
+2. Type `git clone https://github.com/ariefw96/Covid_19.git`
 3. Open the folder and type `npm install` or `yarn install` for install dependencies from package.json
 4. Create file **_.env_** in root directory with the following contents :
 
 ```bash
-BASE_URL = "your_backend_API_URL"
+API_URL = "your_backend_API_URL"
 ```
 
 Example :
@@ -47,7 +47,7 @@ Example :
 so, you can write in .env file like this :
 
 ```bash
-BASE_URL = "http://localhost:8000"
+API_URL = "http://localhost:8000"
 ```
 
 5. Before run this project, you must configure and run backend. You can find backend for this project [here](https://github.com/ariefw96/firebase_covid)
@@ -59,7 +59,7 @@ BASE_URL = "http://localhost:8000"
 **restful-API**
 
 
-[`BlanjaIn-restAPI`](https://github.com/ariefw96/firebase_covid)
+[`COVID19-restAPI`](https://github.com/ariefw96/firebase_covid)
 
 
 
